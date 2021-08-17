@@ -21,7 +21,6 @@ module public ThereAre =
 
         _atLeast (collection.GetEnumerator()) 0 numberOfElements
 
-
     let NoMoreThan<'T> (numberOfElements: int) (collection: IEnumerable<'T>) =
         let rec _noMoreThan (enumerator: IEnumerator<'T>) (currentCount: int) (numberOfElements: int) =
             if currentCount >= numberOfElements then
@@ -51,3 +50,12 @@ module public ThereAre =
                 _odd enumerator (currentCount + 1)
 
         _odd (collection.GetEnumerator()) 0
+
+    let Exactly<'T> (numberOfElements: int) (collection: IEnumerable<'T>) =
+        let rec _exactly (enumerator: IEnumerator<'T>) (currentCount: int) (numberOfElements: int) =
+            if enumerator.MoveNext() then
+                _exactly enumerator (currentCount + 1) numberOfElements
+            else
+                currentCount = numberOfElements
+
+        _exactly (collection.GetEnumerator()) 0 numberOfElements

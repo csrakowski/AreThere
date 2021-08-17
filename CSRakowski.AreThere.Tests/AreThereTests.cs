@@ -56,6 +56,14 @@ namespace CSRakowski.AreThere.Tests
             Assert.NotEqual(expected, actual);
         }
 
+        [Theory]
+        [MemberData(nameof(GetData_CountExact))]
+        public void ThereAre_Exactly<T>(IEnumerable<T> elements, int numberOfElements, bool expected)
+        {
+            var actual = ThereAre.Exactly(numberOfElements, elements);
+            Assert.Equal(expected, actual);
+        }
+
         public static IEnumerable<object[]> GetData_Any =>
             new List<object[]>
             {
@@ -94,6 +102,24 @@ namespace CSRakowski.AreThere.Tests
                 new object[] { new[] { 1, 2, 3}, false },
                 new object[] { Array.Empty<int>(), true },
                 new object[] { new List<int>(), true }
+            };
+
+        public static IEnumerable<object[]> GetData_CountExact =>
+            new List<object[]>
+            {
+                new object[] { Enumerable.Range(1, 10), 10, true },
+                new object[] { Enumerable.Range(1, 10), 11, false },
+                new object[] { Enumerable.Range(1, 10), 9, false },
+                new object[] { Enumerable.Empty<int>(), 0, true },
+                new object[] { new[] { 1, 2, 3}, 3, true },
+                new object[] { Array.Empty<int>(), 0, true },
+                new object[] { new List<int>(), 0, true },
+                new object[] { Enumerable.Range(1, 10), 11, false },
+                new object[] { Enumerable.Empty<int>(), 1, false },
+                new object[] { new[] { 1, 2, 3}, 4, false },
+                new object[] { Array.Empty<int>(), 1, false },
+                new object[] { new List<int>(), 1, false },
+                new object[] { new List<int>() { 1 }, 1, true }
             };
     }
 }
