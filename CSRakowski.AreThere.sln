@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CSRakowski.AreThere", "CSRakowski.AreThere\CSRakowski.AreThere.fsproj", "{0380C7AD-06C7-489C-A188-4E04485D80CA}"
+Project("{6EC3EE1D-3C4E-46DD-8F32-0CC8E7565705}") = "CSRakowski.AreThere", "CSRakowski.AreThere\CSRakowski.AreThere.fsproj", "{0380C7AD-06C7-489C-A188-4E04485D80CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSRakowski.AreThere.Tests", "CSRakowski.AreThere.Tests\CSRakowski.AreThere.Tests.csproj", "{B245BEC5-0461-42EE-8769-12C1A9672386}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CSRakowski.AreThere.Tests", "CSRakowski.AreThere.Tests\CSRakowski.AreThere.Tests.csproj", "{B245BEC5-0461-42EE-8769-12C1A9672386}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "CSRakowski.AreThere.FsTests", "CSRakowski.AreThere.FsTests\CSRakowski.AreThere.FsTests.fsproj", "{92CC5ECD-122A-4AAC-BFB3-65617F089F22}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{B245BEC5-0461-42EE-8769-12C1A9672386}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B245BEC5-0461-42EE-8769-12C1A9672386}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B245BEC5-0461-42EE-8769-12C1A9672386}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92CC5ECD-122A-4AAC-BFB3-65617F089F22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92CC5ECD-122A-4AAC-BFB3-65617F089F22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92CC5ECD-122A-4AAC-BFB3-65617F089F22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92CC5ECD-122A-4AAC-BFB3-65617F089F22}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
