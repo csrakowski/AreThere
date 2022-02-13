@@ -57,6 +57,16 @@ module public Tests =
         Assert.Equal(expected, actual)
 
 
+    [<Theory>]
+    [<MemberData("GetData_CountExact")>]
+    let ``ThereAre HowMany`` (elements: IEnumerable<'T>) (expected: int) (isCorrect: bool) =
+        let actual = ThereAre.HowMany elements
+        if isCorrect then
+            Assert.Equal(expected, actual)
+        else
+            Assert.NotEqual(expected, actual)
+
+
     let GetData_Any : seq<obj[]> =
         seq {
             yield [| Enumerable.Range(1, 10); true |]

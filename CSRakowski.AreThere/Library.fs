@@ -59,3 +59,12 @@ module public ThereAre =
                 currentCount = numberOfElements
 
         _exactly (collection.GetEnumerator()) 0 numberOfElements
+
+    let HowMany<'T> (collection: IEnumerable<'T>) =
+        let rec _exactly (enumerator: IEnumerator<'T>) (currentCount: int) =
+            if enumerator.MoveNext() then
+                _exactly enumerator (currentCount + 1)
+            else
+                currentCount
+
+        _exactly (collection.GetEnumerator()) 0

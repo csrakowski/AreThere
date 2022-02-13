@@ -64,6 +64,21 @@ namespace CSRakowski.AreThere.Tests
             Assert.Equal(expected, actual);
         }
 
+        [Theory]
+        [MemberData(nameof(GetData_CountExact))]
+        public void ThereAre_HowMany<T>(IEnumerable<T> elements, int expected, bool isCorrect)
+        {
+            var actual = ThereAre.HowMany(elements);
+            if (isCorrect)
+            {
+                Assert.Equal(expected, actual);
+            }
+            else
+            {
+                Assert.NotEqual(expected, actual);
+            }
+        }
+
         public static IEnumerable<object[]> GetData_Any =>
             new List<object[]>
             {
