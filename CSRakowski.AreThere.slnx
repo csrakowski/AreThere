@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".gitignore" />
+    <File Path="LICENSE" />
+    <File Path="README.md" />
+  </Folder>
+  <Project Path="CSRakowski.AreThere.FsTests/CSRakowski.AreThere.FsTests.fsproj" />
+  <Project Path="CSRakowski.AreThere.Tests/CSRakowski.AreThere.Tests.csproj" />
+  <Project Path="CSRakowski.AreThere/CSRakowski.AreThere.fsproj" />
+</Solution>
