@@ -10,7 +10,7 @@ namespace CSRakowski.AreThere.Tests
     {
         [Theory]
         [MemberData(nameof(GetData_Any))]
-        public void ThereAre_Any<T>(IEnumerable<T> elements, bool expected)
+        public void ThereAre_Any(IEnumerable<int> elements, bool expected)
         {
             var actual = ThereAre.Any(elements);
             Assert.Equal(expected, actual);
@@ -18,7 +18,7 @@ namespace CSRakowski.AreThere.Tests
 
         [Theory]
         [MemberData(nameof(GetData_Any))]
-        public void ThereAre_No<T>(IEnumerable<T> elements, bool expected)
+        public void ThereAre_No(IEnumerable<int> elements, bool expected)
         {
             var actual = ThereAre.No(elements);
             Assert.NotEqual(expected, actual);
@@ -26,7 +26,7 @@ namespace CSRakowski.AreThere.Tests
 
         [Theory]
         [MemberData(nameof(GetData_Count))]
-        public void ThereAre_AtLeast<T>(IEnumerable<T> elements, int numberOfElements, bool expected)
+        public void ThereAre_AtLeast(IEnumerable<int> elements, int numberOfElements, bool expected)
         {
             var actual = ThereAre.AtLeast(numberOfElements, elements);
             Assert.Equal(expected, actual);
@@ -34,7 +34,7 @@ namespace CSRakowski.AreThere.Tests
 
         [Theory]
         [MemberData(nameof(GetData_Count))]
-        public void ThereAre_NoMoreThan<T>(IEnumerable<T> elements, int numberOfElements, bool expected)
+        public void ThereAre_NoMoreThan(IEnumerable<int> elements, int numberOfElements, bool expected)
         {
             var actual = ThereAre.NoMoreThan(numberOfElements, elements);
             Assert.NotEqual(expected, actual);
@@ -42,7 +42,7 @@ namespace CSRakowski.AreThere.Tests
 
         [Theory]
         [MemberData(nameof(GetData_Even))]
-        public void ThereAre_EvenNumberOfElements<T>(IEnumerable<T> elements, bool expected)
+        public void ThereAre_EvenNumberOfElements(IEnumerable<int> elements, bool expected)
         {
             var actual = ThereAre.EvenNumberOfElements(elements);
             Assert.Equal(expected, actual);
@@ -50,7 +50,7 @@ namespace CSRakowski.AreThere.Tests
 
         [Theory]
         [MemberData(nameof(GetData_Even))]
-        public void ThereAre_OddNumberOfElements<T>(IEnumerable<T> elements, bool expected)
+        public void ThereAre_OddNumberOfElements(IEnumerable<int> elements, bool expected)
         {
             var actual = ThereAre.OddNumberOfElements(elements);
             Assert.NotEqual(expected, actual);
@@ -58,7 +58,7 @@ namespace CSRakowski.AreThere.Tests
 
         [Theory]
         [MemberData(nameof(GetData_CountExact))]
-        public void ThereAre_Exactly<T>(IEnumerable<T> elements, int numberOfElements, bool expected)
+        public void ThereAre_Exactly(IEnumerable<int> elements, int numberOfElements, bool expected)
         {
             var actual = ThereAre.Exactly(numberOfElements, elements);
             Assert.Equal(expected, actual);
@@ -66,7 +66,7 @@ namespace CSRakowski.AreThere.Tests
 
         [Theory]
         [MemberData(nameof(GetData_CountExact))]
-        public void ThereAre_HowMany<T>(IEnumerable<T> elements, int expected, bool isCorrect)
+        public void ThereAre_HowMany(IEnumerable<int> elements, int expected, bool isCorrect)
         {
             var actual = ThereAre.HowMany(elements);
             if (isCorrect)
@@ -79,62 +79,62 @@ namespace CSRakowski.AreThere.Tests
             }
         }
 
-        public static IEnumerable<object[]> GetData_Any =>
-            new List<object[]>
+        public static TheoryData<IEnumerable<int>, bool> GetData_Any =>
+            new TheoryData<IEnumerable<int>, bool>
             {
-                new object[] { Enumerable.Range(1, 10), true },
-                new object[] { Enumerable.Empty<int>(), false },
-                new object[] { new[] { 1, 2, 3}, true },
-                new object[] { Array.Empty<int>(), false },
-                new object[] { new List<int>(), false }
+                { Enumerable.Range(1, 10), true },
+                { Enumerable.Empty<int>(), false },
+                { new[] { 1, 2, 3}, true },
+                { Array.Empty<int>(), false },
+                { new List<int>(), false }
             };
 
-        public static IEnumerable<object[]> GetData_Count =>
-            new List<object[]>
+        public static TheoryData<IEnumerable<int>, int, bool> GetData_Count =>
+            new TheoryData<IEnumerable<int>, int, bool>
             {
-                new object[] { Enumerable.Range(1, 10), 10, true },
-                new object[] { Enumerable.Range(1, 10), 11, false },
-                new object[] { Enumerable.Range(1, 10), 9, true },
-                new object[] { Enumerable.Empty<int>(), 0, true },
-                new object[] { new[] { 1, 2, 3}, 3, true },
-                new object[] { Array.Empty<int>(), 0, true },
-                new object[] { new List<int>(), 0, true },
-                new object[] { Enumerable.Range(1, 10), 11, false },
-                new object[] { Enumerable.Empty<int>(), 1, false },
-                new object[] { new[] { 1, 2, 3}, 4, false },
-                new object[] { Array.Empty<int>(), 1, false },
-                new object[] { new List<int>(), 1, false }
+                { Enumerable.Range(1, 10), 10, true },
+                { Enumerable.Range(1, 10), 11, false },
+                { Enumerable.Range(1, 10), 9, true },
+                { Enumerable.Empty<int>(), 0, true },
+                { new[] { 1, 2, 3}, 3, true },
+                { Array.Empty<int>(), 0, true },
+                { new List<int>(), 0, true },
+                { Enumerable.Range(1, 10), 11, false },
+                { Enumerable.Empty<int>(), 1, false },
+                { new[] { 1, 2, 3}, 4, false },
+                { Array.Empty<int>(), 1, false },
+                { new List<int>(), 1, false }
             };
 
-        public static IEnumerable<object[]> GetData_Even =>
-            new List<object[]>
+        public static TheoryData<IEnumerable<int>, bool> GetData_Even =>
+            new TheoryData<IEnumerable<int>, bool>
             {
-                new object[] { Enumerable.Range(1, 10), true },
-                new object[] { Enumerable.Range(1, 4), true },
-                new object[] { Enumerable.Range(1, 5), false },
-                new object[] { Enumerable.Range(1, 9), false },
-                new object[] { Enumerable.Empty<int>(), true },
-                new object[] { new[] { 1, 2, 3}, false },
-                new object[] { Array.Empty<int>(), true },
-                new object[] { new List<int>(), true }
+                { Enumerable.Range(1, 10), true },
+                { Enumerable.Range(1, 4), true },
+                { Enumerable.Range(1, 5), false },
+                { Enumerable.Range(1, 9), false },
+                { Enumerable.Empty<int>(), true },
+                { new[] { 1, 2, 3}, false },
+                { Array.Empty<int>(), true },
+                { new List<int>(), true }
             };
 
-        public static IEnumerable<object[]> GetData_CountExact =>
-            new List<object[]>
+        public static TheoryData<IEnumerable<int>, int, bool> GetData_CountExact =>
+            new TheoryData<IEnumerable<int>, int, bool>
             {
-                new object[] { Enumerable.Range(1, 10), 10, true },
-                new object[] { Enumerable.Range(1, 10), 11, false },
-                new object[] { Enumerable.Range(1, 10), 9, false },
-                new object[] { Enumerable.Empty<int>(), 0, true },
-                new object[] { new[] { 1, 2, 3}, 3, true },
-                new object[] { Array.Empty<int>(), 0, true },
-                new object[] { new List<int>(), 0, true },
-                new object[] { Enumerable.Range(1, 10), 11, false },
-                new object[] { Enumerable.Empty<int>(), 1, false },
-                new object[] { new[] { 1, 2, 3}, 4, false },
-                new object[] { Array.Empty<int>(), 1, false },
-                new object[] { new List<int>(), 1, false },
-                new object[] { new List<int>() { 1 }, 1, true }
+                { Enumerable.Range(1, 10), 10, true },
+                { Enumerable.Range(1, 10), 11, false },
+                { Enumerable.Range(1, 10), 9, false },
+                { Enumerable.Empty<int>(), 0, true },
+                { new[] { 1, 2, 3}, 3, true },
+                { Array.Empty<int>(), 0, true },
+                { new List<int>(), 0, true },
+                { Enumerable.Range(1, 10), 11, false },
+                { Enumerable.Empty<int>(), 1, false },
+                { new[] { 1, 2, 3}, 4, false },
+                { Array.Empty<int>(), 1, false },
+                { new List<int>(), 1, false },
+                { new List<int>() { 1 }, 1, true }
             };
     }
 }
