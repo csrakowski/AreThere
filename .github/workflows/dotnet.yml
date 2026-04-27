@@ -5,16 +5,16 @@ on: [push, pull_request]
 jobs:
   build:
 
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v6
     - name: Setup .NET
-      uses: actions/setup-dotnet@v2
+      uses: actions/setup-dotnet@v5
       with:
-        dotnet-version: '5.0.x'
+        dotnet-version: '8.0.x'
     - name: Install dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --configuration Release --no-restore --framework net50
+      run: dotnet build --configuration Release --no-restore --framework net8.0
     - name: Test
-      run: dotnet test --no-restore --verbosity normal --framework net50
+      run: dotnet test --no-restore --no-build --verbosity normal --framework net8.0

@@ -5,6 +5,13 @@
     <File Path="LICENSE" />
     <File Path="README.md" />
   </Folder>
+  <Folder Name="/Solution Items/.github/">
+    <File Path=".github/dependabot.yml" />
+    <File Path=".github/FUNDING.yml" />
+  </Folder>
+  <Folder Name="/Solution Items/.github/workflows/">
+    <File Path=".github/workflows/dotnet.yml" />
+  </Folder>
   <Project Path="CSRakowski.AreThere.FsTests/CSRakowski.AreThere.FsTests.fsproj" />
   <Project Path="CSRakowski.AreThere.Tests/CSRakowski.AreThere.Tests.csproj" />
   <Project Path="CSRakowski.AreThere/CSRakowski.AreThere.fsproj" />
